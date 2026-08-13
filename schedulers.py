@@ -6,7 +6,7 @@ from loader import bot
 load_dotenv()
 guruh_id = os.getenv("GURUH_ID")
 
-scheduler = AsyncIOScheduler(timezone="Asia/Tashkent") # O'zbekiston vaqti bilan ishlashi uchun
+scheduler = AsyncIOScheduler(timezone="Asia/Tashkent")
 
 async def send_daily_message():
     try:
@@ -21,8 +21,7 @@ async def send_daily_message():
     except Exception as e:
         print(f"Xabar yuborishda xatolik: {e}")
 
-# Har kuni ertalab soat 08:00 da ishga tushadi (hour=8, minute=0)
-scheduler.add_job(send_daily_message, "interval", seconds=2)
+scheduler.add_job(send_daily_message, "cron", hour=7, minute=0)
 
 def start_scheduler():
     scheduler.start()
