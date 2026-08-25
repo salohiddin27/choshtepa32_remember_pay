@@ -7,7 +7,7 @@ from aiogram.types import Message, CallbackQuery, InlineKeyboardButton
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 
 from loader import dp, bot
-# from schedulers import start_scheduler
+from schedulers import start_scheduler
 
 @dp.message(Command('start'))
 async def start_command(message: Message):
@@ -26,7 +26,7 @@ async def avto_test(callback: CallbackQuery):
     await callback.message.answer("Siz So'ragan Avto_test!,\n\nhttp://t.me/pravaoluzbot/app")
     await callback.answer()
 async def main():
-    # start_scheduler()
+    start_scheduler()
     print("Bot muvaffaqiyatli ishga tushdi...")
     await dp.start_polling(bot)
 
